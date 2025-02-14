@@ -33,7 +33,7 @@ npm install
 npm start
 ```
 
-👥 Miembros del Equipo
+👥 Miembros del Equipo Backend
 
 | Nombre              | Rol               |
 |---------------------|-------------------|
