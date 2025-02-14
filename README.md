@@ -1,6 +1,6 @@
 # Equipo C24-41-T WebApp - Backend API
 
-Este repositorio contiene el backend para la simulación del equipo C24, desarrollado con **Node.js** y **Express.js**, utilizando **Handlebars** para la documentación y **MongoDB** como base de datos.
+Este repositorio contiene el servidor para la simulación de nuestro equipo.
 
 ## 🚀 Descripción
 
