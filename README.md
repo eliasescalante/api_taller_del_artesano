@@ -39,3 +39,8 @@ npm start
 |---------------------|-------------------|
 | **Elías Escalante** | Backend Developer |
 | **Fran ...*  | Backend Developer |
+
+
+### Capturas
+
+![Index documentacion](https://github.com/No-Country-simulation/equipo-c24-41-t-webapp/blob/backend/src/public/captura.png)
