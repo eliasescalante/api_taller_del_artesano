@@ -34,6 +34,8 @@ npm start
 ```
 
 👥 Miembros del Equipo
-Nombre	Rol
-Elías Escalante	Backend Developer
-Carlos Santana	Backend Developer
+
+| Nombre              | Rol               |
+|---------------------|-------------------|
+| **Elías Escalante** | Backend Developer |
+| **Fran ...*  | Backend Developer |
