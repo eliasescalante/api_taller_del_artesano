@@ -31,7 +31,7 @@ Clona el repositorio en tu máquina local:
 git clone https://github.com/No-Country-simulation/equipo-c24-41-t-webapp.git
 cd equipo-c24-41-t-webapp
 npm install
-npm run dev
+npm start
 
 ```
 
