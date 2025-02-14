@@ -37,4 +37,4 @@ npm run dev
 
 ### Capturas
 
-![Index documentacion](ruta/a/la/imagen)
+![Index documentacion](https://github.com/No-Country-simulation/equipo-c24-41-t-webapp/blob/backend/src/public/captura.png)
