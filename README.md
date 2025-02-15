@@ -38,7 +38,7 @@ npm start
 | Nombre              | Rol               |
 |---------------------|-------------------|
 | **Elías Escalante** | Backend Developer |
-| **Fran ...*  | Backend Developer |
+| **...*  | Backend Developer |
 
 
 ### Capturas
