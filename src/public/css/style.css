@@ -1,15 +1,38 @@
+/* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
     color: #333;
-    text-align: center;
-    padding: 20px;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
 
+/* Contenedor principal */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos */
 h1 {
     color: #007bff;
+    font-size: 2.5em;
+    margin-bottom: 20px;
 }
 
+h2 {
+    color: #0056b3;
+    font-size: 1.8em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+/* Lista de endpoints */
 ul {
     list-style: none;
     padding: 0;
@@ -17,8 +40,75 @@ ul {
 
 li {
     background: #fff;
-    padding: 10px;
-    margin: 5px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos para los JSON */
+pre {
+    background: #282c34;
+    color: #abb2bf;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    background: #f4f4f4;
+    padding: 2px 4px;
+    border-radius: 4px;
+    color: #d63384;
+}
+
+/* Botones y detalles */
+details {
+    margin: 10px 0;
+}
+
+summary {
+    font-weight: bold;
+    cursor: pointer;
+    color: #007bff;
+}
+
+summary:hover {
+    color: #0056b3;
+}
+
+/* Estilos para los ejemplos de JSON */
+.example {
+    margin-top: 10px;
+}
+
+.example pre {
+    margin: 0;
+}
+
+/* Estilos para los campos requeridos */
+.required {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* Estilos para los enlaces */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }

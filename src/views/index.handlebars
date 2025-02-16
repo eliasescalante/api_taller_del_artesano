@@ -6,11 +6,45 @@
     <title>{{title}}</title>
 </head>
 <body>
-    <h1>{{message}}</h1>
-    <p>Endpoints disponibles:</p>
-    <ul>
-        <li>GET /users - Obtener usuarios</li>
-        <li>POST /users - Crear usuario</li>
-    </ul>
+    <div class="container">
+        <h1>{{message}}</h1>
+        <p>Endpoints disponibles:</p>
+        <ul>
+            <li>
+                <strong>GET /users</strong> - Obtener todos los usuarios.
+            </li>
+            <li>
+                <strong>POST /users</strong> - Crear un nuevo usuario. Requiere un cuerpo JSON con los campos: <code>name</code>, <code>email</code> y <code>password</code>.
+                <details class="example">
+                    <summary>Ver ejemplo de JSON</summary>
+                    <pre>
+{
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "password": "password123"
+}
+                    </pre>
+                </details>
+            </li>
+            <li>
+                <strong>GET /users/:id</strong> - Obtener un usuario específico por su ID.
+            </li>
+            <li>
+                <strong>PUT /users/:id</strong> - Actualizar un usuario existente por su ID. Requiere un cuerpo JSON con los campos a actualizar.
+                <details class="example">
+                    <summary>Ver ejemplo de JSON</summary>
+                    <pre>
+{
+    "name": "Jane Doe",
+    "email": "jane.doe@example.com"
+}
+                    </pre>
+                </details>
+            </li>
+            <li>
+                <strong>DELETE /users/:id</strong> - Eliminar un usuario por su ID.
+            </li>
+        </ul>
+    </div>
 </body>
 </html>
