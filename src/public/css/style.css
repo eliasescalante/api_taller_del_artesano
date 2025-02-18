@@ -116,12 +116,10 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Detalles de la estructura */
 .example {
     margin-top: 15px;
 }
 
-/* Mejoras visuales en botones */
 button {
     background-color: #2980b9;
     color: white;
