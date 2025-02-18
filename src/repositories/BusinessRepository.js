@@ -18,8 +18,6 @@ class BusinessRepository {
             throw new Error("Business not found: " + error.message);
         }
     }
-
-    // Si necesitas agregar más métodos, puedes hacerlo aquí...
 }
 
 export default BusinessRepository;
