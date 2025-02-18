@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
+    <link rel="stylesheet" href="style.css"> <!-- Asegúrate de incluir el CSS -->
 </head>
 <body>
     <div class="container">
         <h1>{{message}}</h1>
         <p>Endpoints disponibles:</p>
+        
+        <!-- Endpoints de Usuarios -->
+        <h2>Endpoints de Usuarios</h2>
         <ul>
             <li>
                 <strong>GET /users</strong> - Obtener todos los usuarios.
@@ -45,6 +49,45 @@
                 <strong>DELETE /users/:id</strong> - Eliminar un usuario por su ID.
             </li>
         </ul>
+
+        <!-- Endpoints de Productos -->
+        <h2>Endpoints de Productos</h2>
+        <ul>
+            <li>
+                <strong>GET /products</strong> - Obtener todos los productos.
+            </li>
+            <li>
+                <strong>POST /products</strong> - Crear un nuevo producto. Requiere un cuerpo JSON con los campos: <code>name</code> y <code>price</code>.
+                <details class="example">
+                    <summary>Ver ejemplo de JSON</summary>
+                    <pre>
+{
+    "name": "Laptop Gamer",
+    "price": 1500
+}
+                    </pre>
+                </details>
+            </li>
+            <li>
+                <strong>GET /products/:id</strong> - Obtener un producto específico por su ID.
+            </li>
+            <li>
+                <strong>PUT /products/:id</strong> - Actualizar un producto existente por su ID. Requiere un cuerpo JSON con los campos a actualizar.
+                <details class="example">
+                    <summary>Ver ejemplo de JSON</summary>
+                    <pre>
+{
+    "name": "Laptop Ultrabook",
+    "price": 1200
+}
+                    </pre>
+                </details>
+            </li>
+            <li>
+                <strong>DELETE /products/:id</strong> - Eliminar un producto por su ID.
+            </li>
+        </ul>
+
     </div>
 </body>
 </html>

@@ -2,6 +2,7 @@ import express from "express";
 import { engine } from "express-handlebars";
 import connectDB from "./config/db.js";
 import router from "./routes/index.js";
+import productRoutes from "./routes/product.routes.js";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -25,5 +26,6 @@ app.use(express.static("./src/public"));
 
 // Rutas
 app.use("/", router);
+app.use("/products", productRoutes);
 
 app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));
