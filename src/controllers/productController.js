@@ -1,4 +1,3 @@
-// src/controllers/productController.js
 import ProductRepository from "../repositories/ProductRepository.js";
 
 export const createProduct = async (req, res) => {

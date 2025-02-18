@@ -1,114 +1,141 @@
-/* Estilos generales */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+/* Reset de estilos básicos */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo y tipografía general */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f9fc;
+    color: #333;
     line-height: 1.6;
-}
-
-/* Contenedor principal */
-.container {
-    max-width: 800px;
-    margin: 50px auto;
     padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Títulos */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos de encabezados */
 h1 {
-    color: #007bff;
+    color: #2c3e50;
     font-size: 2.5em;
     margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid #e1e8f0;
+    padding-bottom: 15px;
 }
 
 h2 {
-    color: #0056b3;
+    color: #2980b9;
     font-size: 1.8em;
     margin-top: 30px;
-    margin-bottom: 15px;
+    border-bottom: 1px solid #e1e8f0;
+    padding-bottom: 10px;
 }
 
-/* Lista de endpoints */
+/* Estilos para listas de endpoints */
 ul {
     list-style: none;
     padding: 0;
 }
 
-li {
-    background: #fff;
+ul li {
+    background-color: #ffffff;
+    margin: 12px 0;
     padding: 15px;
-    margin: 10px 0;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-li:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+ul li:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
 }
 
-/* Estilos para los JSON */
-pre {
-    background: #282c34;
-    color: #abb2bf;
-    padding: 15px;
-    border-radius: 6px;
-    overflow-x: auto;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.9em;
-    line-height: 1.5;
-    margin: 10px 0;
-}
-
-code {
-    font-family: 'Courier New', Courier, monospace;
-    background: #f4f4f4;
-    padding: 2px 4px;
+ul li code {
+    background-color: #f1f4f8;
+    padding: 4px 6px;
     border-radius: 4px;
-    color: #d63384;
+    font-size: 1.1em;
+    color: #e74c3c;
 }
 
-/* Botones y detalles */
+/* Estilos para respuestas de código */
+pre {
+    background-color: #2d3e50;
+    color: #f1f4f8;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-top: 10px;
+    line-height: 1.4;
+}
+
+/* Estilo para el código en JSON */
+code {
+    background-color: #f7f9fc;
+    padding: 3px 6px;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 4px;
+    color: #e74c3c;
+}
+
+/* Detalles para los ejemplos */
 details {
-    margin: 10px 0;
+    margin: 20px 0;
 }
 
 summary {
     font-weight: bold;
+    color: #2980b9;
     cursor: pointer;
-    color: #007bff;
 }
 
 summary:hover {
-    color: #0056b3;
+    color: #3498db;
 }
 
-/* Estilos para los ejemplos de JSON */
-.example {
-    margin-top: 10px;
-}
-
-.example pre {
-    margin: 0;
-}
-
-/* Estilos para los campos requeridos */
-.required {
-    color: #dc3545;
-    font-weight: bold;
-}
-
-/* Estilos para los enlaces */
+/* Estilo para enlaces */
 a {
-    color: #007bff;
+    color: #3498db;
     text-decoration: none;
+    font-weight: bold;
 }
 
 a:hover {
     text-decoration: underline;
+}
+
+/* Detalles de la estructura */
+.example {
+    margin-top: 15px;
+}
+
+/* Mejoras visuales en botones */
+button {
+    background-color: #2980b9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #3498db;
+}
+
+button:focus {
+    outline: none;
 }

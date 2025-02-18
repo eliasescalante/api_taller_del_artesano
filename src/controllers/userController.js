@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import UserRepository from "../repositories/UserRepository.js";
+import BusinessRepository from "../repositories/BusinessRepository.js";
 
 export const getUsers = async (req, res) => {
     try {
@@ -12,6 +13,19 @@ export const getUsers = async (req, res) => {
 
 export const createUser = async (req, res) => {
     try {
+        const { role, business, ...rest } = req.body;
+        
+        if (role === "vendedor" && !business) {
+            // Crear un negocio predeterminado usando el repositorio
+            const newBusinessData = {
+                name: "Negocio Predeterminado",
+                category: "General",
+                address: "Dirección desconocida"
+            };
+            const newBusiness = await BusinessRepository.createBusiness(newBusinessData);
+            req.body.business = newBusiness._id;  // Asignar el ID del negocio creado
+        }
+
         const user = await UserRepository.create(req.body);
         res.status(201).json(user);
     } catch (error) {

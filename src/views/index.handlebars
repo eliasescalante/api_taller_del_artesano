@@ -1,93 +1,239 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
-    <link rel="stylesheet" href="style.css"> <!-- Asegúrate de incluir el CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>{{message}}</h1>
-        <p>Endpoints disponibles:</p>
-        
-        <!-- Endpoints de Usuarios -->
-        <h2>Endpoints de Usuarios</h2>
+        <h1>{{title}}</h1>
+        <p>{{message}}</p>
+
+        <h2>Usuarios</h2>
         <ul>
             <li>
-                <strong>GET /users</strong> - Obtener todos los usuarios.
-            </li>
-            <li>
-                <strong>POST /users</strong> - Crear un nuevo usuario. Requiere un cuerpo JSON con los campos: <code>name</code>, <code>email</code> y <code>password</code>.
-                <details class="example">
-                    <summary>Ver ejemplo de JSON</summary>
+                <strong>GET /users</strong> - Obtener todos los usuarios
+                <details>
+                    <summary>Respuesta (200 OK)</summary>
                     <pre>
-{
-    "name": "John Doe",
-    "email": "john.doe@example.com",
-    "password": "password123"
-}
+<code>
+[
+    {
+        "id": "1",
+        "name": "Juan Pérez",
+        "email": "juan@example.com",
+        "role": "cliente"
+    },
+    {
+        "id": "2",
+        "name": "María Gómez",
+        "email": "maria@example.com",
+        "role": "vendedor"
+    }
+]
+</code>
                     </pre>
                 </details>
             </li>
             <li>
-                <strong>GET /users/:id</strong> - Obtener un usuario específico por su ID.
-            </li>
-            <li>
-                <strong>PUT /users/:id</strong> - Actualizar un usuario existente por su ID. Requiere un cuerpo JSON con los campos a actualizar.
-                <details class="example">
-                    <summary>Ver ejemplo de JSON</summary>
+                <strong>GET /users/:id</strong> - Obtener un usuario por ID
+                <details>
+                    <summary>Respuesta (200 OK)</summary>
                     <pre>
+<code>
 {
-    "name": "Jane Doe",
-    "email": "jane.doe@example.com"
+    "id": "1",
+    "name": "Juan Pérez",
+    "email": "juan@example.com",
+    "role": "cliente"
 }
+</code>
                     </pre>
                 </details>
             </li>
             <li>
-                <strong>DELETE /users/:id</strong> - Eliminar un usuario por su ID.
+                <strong>POST /users</strong> - Crear un nuevo usuario
+                <details>
+                    <summary>Body (JSON)</summary>
+                    <pre>
+<code>
+{
+    "name": "Carlos Santana",
+    "email": "carlos@example.com",
+    "password": "password123",
+    "role": "cliente"
+}
+</code>
+                    </pre>
+                    <summary>Respuesta (201 Created)</summary>
+                    <pre>
+<code>
+{
+    "id": "3",
+    "name": "Carlos Santana",
+    "email": "carlos@example.com",
+    "role": "cliente"
+}
+</code>
+                    </pre>
+                </details>
+            </li>
+            <li>
+                <strong>PUT /users/:id</strong> - Actualizar un usuario por ID
+                <details>
+                    <summary>Body (JSON)</summary>
+                    <pre>
+<code>
+{
+    "name": "Carlos Santana Actualizado",
+    "email": "carlosnuevo@example.com",
+    "role": "vendedor"
+}
+</code>
+                    </pre>
+                    <summary>Respuesta (200 OK)</summary>
+                    <pre>
+<code>
+{
+    "id": "3",
+    "name": "Carlos Santana Actualizado",
+    "email": "carlosnuevo@example.com",
+    "role": "vendedor"
+}
+</code>
+                    </pre>
+                </details>
+            </li>
+            <li>
+                <strong>DELETE /users/:id</strong> - Eliminar un usuario por ID
+                <details>
+                    <summary>Respuesta (200 OK)</summary>
+                    <pre>
+<code>
+{
+    "message": "Usuario eliminado correctamente."
+}
+</code>
+                    </pre>
+                </details>
             </li>
         </ul>
 
-        <!-- Endpoints de Productos -->
-        <h2>Endpoints de Productos</h2>
+        <h2>Productos</h2>
         <ul>
             <li>
-                <strong>GET /products</strong> - Obtener todos los productos.
-            </li>
-            <li>
-                <strong>POST /products</strong> - Crear un nuevo producto. Requiere un cuerpo JSON con los campos: <code>name</code> y <code>price</code>.
-                <details class="example">
-                    <summary>Ver ejemplo de JSON</summary>
+                <strong>GET /products</strong> - Obtener todos los productos
+                <details>
+                    <summary>Respuesta (200 OK)</summary>
                     <pre>
-{
-    "name": "Laptop Gamer",
-    "price": 1500
-}
+<code>
+[
+    {
+        "id": "1",
+        "name": "Producto A",
+        "description": "Descripción del producto A",
+        "price": 100,
+        "stock": 10
+    },
+    {
+        "id": "2",
+        "name": "Producto B",
+        "description": "Descripción del producto B",
+        "price": 150,
+        "stock": 5
+    }
+]
+</code>
                     </pre>
                 </details>
             </li>
             <li>
-                <strong>GET /products/:id</strong> - Obtener un producto específico por su ID.
-            </li>
-            <li>
-                <strong>PUT /products/:id</strong> - Actualizar un producto existente por su ID. Requiere un cuerpo JSON con los campos a actualizar.
-                <details class="example">
-                    <summary>Ver ejemplo de JSON</summary>
+                <strong>GET /products/:id</strong> - Obtener un producto por ID
+                <details>
+                    <summary>Respuesta (200 OK)</summary>
                     <pre>
+<code>
 {
-    "name": "Laptop Ultrabook",
-    "price": 1200
+    "id": "1",
+    "name": "Producto A",
+    "description": "Descripción del producto A",
+    "price": 100,
+    "stock": 10
 }
+</code>
                     </pre>
                 </details>
             </li>
             <li>
-                <strong>DELETE /products/:id</strong> - Eliminar un producto por su ID.
+                <strong>POST /products</strong> - Crear un nuevo producto
+                <details>
+                    <summary>Body (JSON)</summary>
+                    <pre>
+<code>
+{
+    "name": "Producto C",
+    "description": "Descripción del producto C",
+    "price": 200,
+    "stock": 8
+}
+</code>
+                    </pre>
+                    <summary>Respuesta (201 Created)</summary>
+                    <pre>
+<code>
+{
+    "id": "3",
+    "name": "Producto C",
+    "description": "Descripción del producto C",
+    "price": 200,
+    "stock": 8
+}
+</code>
+                    </pre>
+                </details>
+            </li>
+            <li>
+                <strong>PUT /products/:id</strong> - Actualizar un producto por ID
+                <details>
+                    <summary>Body (JSON)</summary>
+                    <pre>
+<code>
+{
+    "price": 250,
+    "stock": 12
+}
+</code>
+                    </pre>
+                    <summary>Respuesta (200 OK)</summary>
+                    <pre>
+<code>
+{
+    "id": "3",
+    "name": "Producto C",
+    "description": "Descripción del producto C",
+    "price": 250,
+    "stock": 12
+}
+</code>
+                    </pre>
+                </details>
+            </li>
+            <li>
+                <strong>DELETE /products/:id</strong> - Eliminar un producto por ID
+                <details>
+                    <summary>Respuesta (200 OK)</summary>
+                    <pre>
+<code>
+{
+    "message": "Producto eliminado correctamente."
+}
+</code>
+                    </pre>
+                </details>
             </li>
         </ul>
-
     </div>
 </body>
 </html>
