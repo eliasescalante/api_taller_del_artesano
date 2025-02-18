@@ -23,6 +23,10 @@ class UserRepository {
     async update(id, userData) {
         return await User.findByIdAndUpdate(id, { $set: { ...userData } }, { new: true });
     }
+
+    async getByEmail(email) {
+        return await User.findOne({ email });
+    }
 }
 
 export default new UserRepository();

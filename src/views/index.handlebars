@@ -19,11 +19,11 @@
                     <summary>Respuesta (200 OK)</summary>
                     <pre>
 <code>
-[
+[ 
     {
-        "id": "1",
-        "name": "Juan Pérez",
-        "email": "juan@example.com",
+        "id": "1", 
+        "name": "Juan Pérez", 
+        "email": "juan@example.com", 
         "role": "cliente"
     },
     {
@@ -114,6 +114,40 @@
 <code>
 {
     "message": "Usuario eliminado correctamente."
+}
+</code>
+                    </pre>
+                </details>
+            </li>
+        </ul>
+
+        <h2>Autenticación</h2>
+        <ul>
+            <li>
+                <strong>POST /login</strong> - Iniciar sesión y obtener un token JWT
+                <details>
+                    <summary>Body (JSON)</summary>
+                    <pre>
+<code>
+{
+    "email": "usuario@ejemplo.com",
+    "password": "tu_contraseña"
+}
+</code>
+                    </pre>
+                    <summary>Respuesta (200 OK)</summary>
+                    <pre>
+<code>
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGZkMTY1ZTY2NmFhZTgwZWIyZTgwMSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNjAyODg5NzYyLCJpYXQiOjE2MDI4ODU5NjJ9._I_Dt4IHxk_f2H7P4WJvgQ1D5Zf9q0FwRI6FbeZIPlw"
+}
+</code>
+                    </pre>
+                    <summary>Respuesta (400 Bad Request)</summary>
+                    <pre>
+<code>
+{
+    "message": "Usuario no encontrado"
 }
 </code>
                     </pre>
