@@ -268,6 +268,173 @@
                 </details>
             </li>
         </ul>
+
+
+    <h2>Negocios</h2>
+        <ul>
+            <li>
+                <strong>GET /businesses</strong> - Obtener todos los negocios
+                <details>
+                    <summary>Respuesta (200 OK)</summary>
+                    <pre>
+<code>
+[
+    {
+        "id": "1",
+        "name": "Tienda A",
+        "category": "Electrónica",
+        "products": [],
+        "address": "Calle 123"
+    },
+    {
+        "id": "2",
+        "name": "Tienda B",
+        "category": "Ropa",
+        "products": ["prod_1", "prod_2"],
+        "address": "Avenida 456"
+    }
+]
+</code>
+                    </pre>
+                </details>
+            </li>
+
+            <li>
+                <strong>GET /businesses/:id</strong> - Obtener un negocio por ID
+                <details>
+                    <summary>Respuesta (200 OK)</summary>
+                    <pre>
+<code>
+{
+    "id": "1",
+    "name": "Tienda A",
+    "category": "Electrónica",
+    "products": [],
+    "address": "Calle 123"
+}
+</code>
+                    </pre>
+                </details>
+            </li>
+
+            <li>
+                <strong>POST /businesses</strong> - Crear un nuevo negocio
+                <details>
+                    <summary>Body (JSON)</summary>
+                    <pre>
+<code>
+{
+    "name": "Nueva Tienda",
+    "category": "Hogar",
+    "address": "Dirección 789"
+}
+</code>
+                    </pre>
+                    <summary>Respuesta (201 Created)</summary>
+                    <pre>
+<code>
+{
+    "id": "3",
+    "name": "Nueva Tienda",
+    "category": "Hogar",
+    "products": [],
+    "address": "Dirección 789"
+}
+</code>
+                    </pre>
+                </details>
+            </li>
+
+            <li>
+                <strong>PUT /businesses/:id</strong> - Actualizar un negocio por ID
+                <details>
+                    <summary>Body (JSON)</summary>
+                    <pre>
+<code>
+{
+    "name": "Tienda Modificada",
+    "category": "Deportes",
+    "address": "Calle Nueva 321"
+}
+</code>
+                    </pre>
+                    <summary>Respuesta (200 OK)</summary>
+                    <pre>
+<code>
+{
+    "id": "1",
+    "name": "Tienda Modificada",
+    "category": "Deportes",
+    "products": [],
+    "address": "Calle Nueva 321"
+}
+</code>
+                    </pre>
+                </details>
+            </li>
+
+            <li>
+                <strong>DELETE /businesses/:id</strong> - Eliminar un negocio por ID
+                <details>
+                    <summary>Respuesta (200 OK)</summary>
+                    <pre>
+<code>
+{
+    "message": "Negocio eliminado correctamente."
+}
+</code>
+                    </pre>
+                </details>
+            </li>
+
+            <li>
+                <strong>PUT /businesses/:businessId/addProduct/:productId</strong> - Agregar un producto a un negocio
+                <details>
+                    <summary>Ejemplo de llamada</summary>
+                    <pre>
+<code>
+PUT /businesses/1/addProduct/101
+</code>
+                    </pre>
+                    <summary>Respuesta (200 OK)</summary>
+                    <pre>
+<code>
+{
+    "id": "1",
+    "name": "Tienda A",
+    "category": "Electrónica",
+    "products": ["101"],
+    "address": "Calle 123"
+}
+</code>
+                    </pre>
+                </details>
+            </li>
+
+            <li>
+                <strong>PUT /businesses/:businessId/removeProduct/:productId</strong> - Eliminar un producto de un negocio
+                <details>
+                    <summary>Ejemplo de llamada</summary>
+                    <pre>
+<code>
+PUT /businesses/1/removeProduct/101
+</code>
+                    </pre>
+                    <summary>Respuesta (200 OK)</summary>
+                    <pre>
+<code>
+{
+    "id": "1",
+    "name": "Tienda A",
+    "category": "Electrónica",
+    "products": [],
+    "address": "Calle 123"
+}
+</code>
+                    </pre>
+                </details>
+            </li>
+        </ul>
     </div>
 </body>
 </html>

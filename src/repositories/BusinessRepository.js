@@ -1,23 +1,42 @@
 import Business from "../models/Business.js";
 
 class BusinessRepository {
-    static async createBusiness(businessData) {
-        try {
-            const newBusiness = await Business.create(businessData);
-            return newBusiness;
-        } catch (error) {
-            throw new Error("Error creating business: " + error.message);
-        }
+    async getAll() {
+        return await Business.find().populate("products");
     }
 
-    static async getBusinessById(businessId) {
-        try {
-            const business = await Business.findById(businessId);
-            return business;
-        } catch (error) {
-            throw new Error("Business not found: " + error.message);
-        }
+    async getById(id) {
+        return await Business.findById(id).populate("products");
+    }
+
+    async create(businessData) {
+        return await Business.create(businessData);
+    }
+
+    async update(id, businessData) {
+        return await Business.findByIdAndUpdate(id, { $set: businessData }, { new: true }).populate("products");
+    }
+
+    async delete(id) {
+        return await Business.findByIdAndDelete(id);
+    }
+
+    async addProduct(businessId, productId) {
+        return await Business.findByIdAndUpdate(
+            businessId,
+            { $push: { products: productId } },
+            { new: true }
+        ).populate("products");
+    }
+
+    async removeProduct(businessId, productId) {
+        return await Business.findByIdAndUpdate(
+            businessId,
+            { $pull: { products: productId } },
+            { new: true }
+        ).populate("products");
     }
 }
 
-export default BusinessRepository;
+export default new BusinessRepository();
+
