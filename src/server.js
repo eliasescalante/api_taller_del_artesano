@@ -26,7 +26,12 @@ app.set("views", "./src/views");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("./src/public"));
-app.use(fileUpload());
+//app.use(fileUpload());
+// Middleware para manejar la subida de archivos
+app.use(fileUpload({
+    useTempFiles: true, // Usar archivos temporales
+    tempFileDir: '/tmp/', // Ruta temporal para almacenar archivos
+}));
 
 // Rutas
 app.use("/", router);
