@@ -6,6 +6,7 @@ import businessRoutes from "./routes/business.routes.js";
 import productRoutes from "./routes/product.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import dotenv from "dotenv";
+import fileUpload from 'express-fileupload';
 
 dotenv.config();
 
@@ -25,11 +26,13 @@ app.set("views", "./src/views");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("./src/public"));
+app.use(fileUpload());
 
 // Rutas
 app.use("/", router);
 app.use("/products", productRoutes);
 app.use("/users", userRoutes);
 app.use("/businesses", businessRoutes);
+
 
 app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));

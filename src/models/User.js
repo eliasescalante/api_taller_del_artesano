@@ -7,7 +7,11 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     role: { type: String, enum: ["cliente", "vendedor"], required: true },
     cart: { type: Array, default: [] },
-    business: { type: mongoose.Schema.Types.ObjectId, ref: "Business", required: function() { return this.role === "vendedor"; } }
+    business: { type: mongoose.Schema.Types.ObjectId, ref: "Business", required: function() { return this.role === "vendedor"; } },
+    imageUrl : {
+        type: String,
+        default: ""
+    }
 });
 
 // Encriptar la contraseña antes de guardar

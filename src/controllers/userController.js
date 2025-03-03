@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import UserRepository from "../repositories/UserRepository.js";
 import BusinessRepository from "../repositories/BusinessRepository.js";
+import cloudinary from "../config/cloudinary.js";
 
 export const getUsers = async (req, res) => {
     try {
@@ -75,5 +76,33 @@ export const updateUser = async (req, res) => {
         res.json(user);
     } catch (error) {
         res.status(500).json({ message: "Error updating user", error: error.message });
+    }
+};
+
+export const updateAvatar = async (req, res) => {
+    console.log("Archivos recibidos:", req.files); // Verifica si el archivo se está recibiendo
+    const userId = req.params.id;  // Obtener el ID del usuario desde la URL
+    if (!req.files || !req.files.avatar) {
+        return res.status(400).json({ message: "No avatar image uploaded" });
+    }
+
+    try {
+        // Subir la imagen a Cloudinary
+        const result = await cloudinary.v2.uploader.upload(req.files.avatar.tempFilePath, {
+            folder: "avatars", // Puedes cambiar el folder si lo deseas
+        });
+
+        // Actualizar la imagen del usuario en la base de datos
+        const updatedUser = await UserRepository.update(userId, {
+            imageUrl: result.secure_url,
+        });
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.json({ message: "Avatar updated successfully", updatedUser });
+    } catch (error) {
+        res.status(500).json({ message: "Error uploading avatar", error: error.message });
     }
 };

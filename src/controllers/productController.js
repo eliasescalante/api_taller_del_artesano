@@ -1,4 +1,5 @@
 import ProductRepository from "../repositories/ProductRepository.js";
+import cloudinary from "../config/cloudinary.js";
 
 export const createProduct = async (req, res) => {
     try {
@@ -54,5 +55,28 @@ export const deleteProduct = async (req, res) => {
         res.json({ message: "Product deleted successfully" });
     } catch (error) {
         res.status(500).json({ message: "Error deleting product", error: error.message });
+    }
+};
+
+export const uploadProductImage = async (req, res) => {
+    const { id } = req.params;
+    if (!req.files || !req.files.image) {
+        return res.status(400).json({ message: "No product image uploaded" });
+    }
+
+    try {
+        // Subir la imagen a Cloudinary
+        const result = await cloudinary.v2.uploader.upload(req.files.image.tempFilePath, {
+            folder: "products", // Puedes cambiar el folder si lo deseas
+        });
+
+        // Actualizar el producto con la URL de la imagen
+        const updatedProduct = await ProductRepository.update(id, {
+            imageUrl: result.secure_url,
+        });
+
+        res.json({ message: "Product image uploaded successfully", updatedProduct });
+    } catch (error) {
+        res.status(500).json({ message: "Error uploading product image", error: error.message });
     }
 };

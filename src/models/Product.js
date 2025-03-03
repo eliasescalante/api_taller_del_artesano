@@ -5,7 +5,11 @@ const productSchema = new mongoose.Schema({
     description: String,
     price: { type: Number, required: true },
     stock: { type: Number, required: true },
-    imageUrl: String,
+    Category : { type: String, required: true},
+    imageUrl: {
+        type: String,
+        default : "",
+    },
     business: { type: mongoose.Schema.Types.ObjectId, ref: "Business" }
 });
 
