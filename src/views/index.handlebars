@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>{{title}}</h1>
         <p>{{message}}</p>
 
+        <!-- Sección de Usuarios -->
         <h2>Usuarios</h2>
         <ul>
+            <!-- Endpoints existentes de usuarios -->
             <li>
                 <strong>GET /users</strong> - Obtener todos los usuarios
                 <details>
@@ -119,8 +120,49 @@
                     </pre>
                 </details>
             </li>
+            <!-- Nuevos endpoints para usuarios -->
+            <li>
+                <strong>PUT /users/:id/avatar</strong> - Actualizar el avatar de un usuario
+                <details>
+                    <summary>Body (FormData)</summary>
+                    <pre>
+<code>
+avatar: [Archivo de imagen]
+</code>
+                    </pre>
+                    <summary>Respuesta (200 OK)</summary>
+                    <pre>
+<code>
+{
+    "message": "Avatar updated successfully",
+    "updatedUser": {
+        "id": "1",
+        "name": "Juan Pérez",
+        "email": "juan@example.com",
+        "role": "cliente",
+        "imageUrl": "https://res.cloudinary.com/dizveyfyp/image/upload/v1631234567/avatars/avatar1.jpg"
+    }
+}
+</code>
+                    </pre>
+                </details>
+            </li>
+            <li>
+                <strong>GET /users/:id/avatar</strong> - Obtener el avatar de un usuario por ID
+                <details>
+                    <summary>Respuesta (200 OK)</summary>
+                    <pre>
+<code>
+{
+    "imageUrl": "https://res.cloudinary.com/dizveyfyp/image/upload/v1631234567/avatars/avatar1.jpg"
+}
+</code>
+                    </pre>
+                </details>
+            </li>
         </ul>
 
+        <!-- Sección de Autenticación -->
         <h2>Autenticación</h2>
         <ul>
             <li>
@@ -155,8 +197,10 @@
             </li>
         </ul>
 
+        <!-- Sección de Productos -->
         <h2>Productos</h2>
         <ul>
+            <!-- Endpoints existentes de productos -->
             <li>
                 <strong>GET /products</strong> - Obtener todos los productos
                 <details>
@@ -267,11 +311,53 @@
                     </pre>
                 </details>
             </li>
+            <!-- Nuevos endpoints para productos -->
+            <li>
+                <strong>POST /products/:id/upload-image</strong> - Subir una imagen para un producto
+                <details>
+                    <summary>Body (FormData)</summary>
+                    <pre>
+<code>
+image: [Archivo de imagen]
+</code>
+                    </pre>
+                    <summary>Respuesta (200 OK)</summary>
+                    <pre>
+<code>
+{
+    "message": "Product image uploaded successfully",
+    "updatedProduct": {
+        "id": "1",
+        "name": "Producto A",
+        "description": "Descripción del producto A",
+        "price": 100,
+        "stock": 10,
+        "imageUrl": "https://res.cloudinary.com/dizveyfyp/image/upload/v1631234567/products/product1.jpg"
+    }
+}
+</code>
+                    </pre>
+                </details>
+            </li>
+            <li>
+                <strong>GET /products/:id/image</strong> - Obtener la imagen de un producto por ID
+                <details>
+                    <summary>Respuesta (200 OK)</summary>
+                    <pre>
+<code>
+{
+    "imageUrl": "https://res.cloudinary.com/dizveyfyp/image/upload/v1631234567/products/product1.jpg"
+}
+</code>
+                    </pre>
+                </details>
+            </li>
         </ul>
 
-
-    <h2>Negocios</h2>
+        <!-- Sección de Negocios -->
+        <h2>Negocios</h2>
         <ul>
+            <!-- Endpoints existentes de negocios -->
             <li>
                 <strong>GET /businesses</strong> - Obtener todos los negocios
                 <details>
@@ -298,7 +384,6 @@
                     </pre>
                 </details>
             </li>
-
             <li>
                 <strong>GET /businesses/:id</strong> - Obtener un negocio por ID
                 <details>
@@ -316,7 +401,6 @@
                     </pre>
                 </details>
             </li>
-
             <li>
                 <strong>POST /businesses</strong> - Crear un nuevo negocio
                 <details>
@@ -344,7 +428,6 @@
                     </pre>
                 </details>
             </li>
-
             <li>
                 <strong>PUT /businesses/:id</strong> - Actualizar un negocio por ID
                 <details>
@@ -372,7 +455,6 @@
                     </pre>
                 </details>
             </li>
-
             <li>
                 <strong>DELETE /businesses/:id</strong> - Eliminar un negocio por ID
                 <details>
@@ -386,7 +468,6 @@
                     </pre>
                 </details>
             </li>
-
             <li>
                 <strong>PUT /businesses/:businessId/addProduct/:productId</strong> - Agregar un producto a un negocio
                 <details>
@@ -410,7 +491,6 @@ PUT /businesses/1/addProduct/101
                     </pre>
                 </details>
             </li>
-
             <li>
                 <strong>PUT /businesses/:businessId/removeProduct/:productId</strong> - Eliminar un producto de un negocio
                 <details>
