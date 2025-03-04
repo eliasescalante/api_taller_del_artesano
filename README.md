@@ -38,7 +38,7 @@ npm start
 | Nombre              | Rol               |
 |---------------------|-------------------|
 | **Elías Escalante** | Backend Developer |
-| **Oscar Carrasco*  | Backend Developer |
+| **Oscar Carrasco**  | Backend Developer |
 
 
 ### Capturas
