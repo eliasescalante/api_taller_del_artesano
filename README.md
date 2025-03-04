@@ -43,4 +43,4 @@ npm start
 
 ### Capturas
 
-![Index documentacion](https://github.com/No-Country-simulation/equipo-c24-41-t-webapp/blob/backend/src/public/captura.png)
+![Index documentacion](https://github.com/No-Country-simulation/equipo-c24-41-t-webapp/blob/backend/src/public/captura1.png)
