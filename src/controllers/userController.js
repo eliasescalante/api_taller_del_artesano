@@ -14,20 +14,31 @@ export const getUsers = async (req, res) => {
 
 export const createUser = async (req, res) => {
     try {
-        const { role, business, ...rest } = req.body;
-        
-        if (role === "vendedor" && !business) {
-            // Crear un negocio predeterminado usando el repositorio
-            const newBusinessData = {
-                name: "Negocio Predeterminado",
-                category: "General",
-                address: "Dirección desconocida"
-            };
-            const newBusiness = await BusinessRepository.createBusiness(newBusinessData);
-            req.body.business = newBusiness._id;  // Asignar el ID del negocio creado
-        }
+        const { name, email, password } = req.body;
 
-        const user = await UserRepository.create(req.body);
+        // Crear un negocio para el usuario
+        const newBusiness = await BusinessRepository.create({
+            name: `${name}'s Business`,
+            category: "General",
+            address: "Dirección desconocida"
+        });
+
+        // Crear un carrito para el usuario
+        const newCart = await CartRepository.create({ user: null, products: [] });
+
+        // Crear usuario con carrito y negocio asignados
+        const user = await UserRepository.create({
+            name,
+            email,
+            password,
+            business: newBusiness._id,
+            cart: newCart._id
+        });
+
+        // Asociar el usuario al carrito
+        newCart.user = user._id;
+        await newCart.save();
+
         res.status(201).json(user);
     } catch (error) {
         res.status(500).json({ message: "Error creating user", error: error.message });

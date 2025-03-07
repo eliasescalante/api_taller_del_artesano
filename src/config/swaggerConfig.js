@@ -10,7 +10,7 @@ const options = {
     info: {
       title: "API de Negocios y Productos",
       version: "1.0.0",
-      description: "Documentación de la API para la gestión de negocios y productos",
+      description: "Documentación de la API - TALLER DEL ARTESANO -",
     },
     servers: [
       {
@@ -18,6 +18,53 @@ const options = {
         description: "Servidor local",
       },
     ],
+    components: {
+      securitySchemes: {
+        BearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+      schemas: {
+        Cart: {
+          type: "object",
+          properties: {
+            _id: { type: "string", example: "65b2d0b2d7e6e9001567b123" },
+            user: { type: "string", example: "65a2d0b2d7e6e9001567b456" },
+            products: {
+              type: "array",
+              items: {
+                type: "object",
+                properties: {
+                  product: { type: "string", example: "65a2d0b2d7e6e9001567b789" },
+                  quantity: { type: "integer", example: 2 },
+                },
+              },
+            },
+          },
+        },
+        Ticket: {
+          type: "object",
+          properties: {
+            _id: { type: "string", example: "65b2d0b2d7e6e9001567b555" },
+            user: { type: "string", example: "65a2d0b2d7e6e9001567b456" },
+            items: {
+              type: "array",
+              items: {
+                type: "object",
+                properties: {
+                  product: { type: "string", example: "65a2d0b2d7e6e9001567b789" },
+                  quantity: { type: "integer", example: 2 },
+                },
+              },
+            },
+            total: { type: "number", example: 29.99 },
+            createdAt: { type: "string", format: "date-time", example: "2025-03-07T10:00:00Z" },
+          },
+        },
+      },
+    },
   },
   apis: ["./src/routes/*.js"], // Documentar las rutas de la API
 };

@@ -5,8 +5,7 @@ const userSchema = new mongoose.Schema({
     name: String,
     email: String,
     password: { type: String, required: true },
-    role: { type: String, enum: ["cliente", "vendedor"], required: true },
-    cart: { type: Array, default: [] },
+    cart: { type: mongoose.Schema.Types.ObjectId, ref: "Cart", default: null },
     business: { type: mongoose.Schema.Types.ObjectId, ref: "Business", required: function() { return this.role === "vendedor"; } },
     imageUrl : {
         type: String,
