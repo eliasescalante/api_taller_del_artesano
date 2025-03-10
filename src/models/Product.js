@@ -8,6 +8,10 @@ const productSchema = new mongoose.Schema({
     category : { type: String, required: true},
     country : {type: String, required: true},
     state : {type: String, required: true},
+    technicalSpecs: {
+        type: [String],
+        default: [],
+    },
     imageUrl: {
         type: String,
         default : "",
