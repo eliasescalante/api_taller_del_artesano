@@ -1,6 +1,6 @@
 import ProductRepository from "../repositories/ProductRepository.js";
 import cloudinary from "../config/cloudinary.js";
-
+/*
 export const createProduct = async (req, res) => {
     try {
         const product = await ProductRepository.create(req.body);
@@ -9,6 +9,43 @@ export const createProduct = async (req, res) => {
         res.status(500).json({ message: "Error creating product", error: error.message });
     }
 };
+*/
+
+export const createProduct = async (req, res) => {
+    try {
+        const { name, description, price, stock, category, country, state, technicalSpecs } = req.body;
+
+        // Obtener el usuario logueado
+        const userId = req.userId;
+
+        // Obtener el negocio asociado al usuario
+        const user = await UserRepository.getUser(userId);
+        if (!user || !user.business) {
+            return res.status(400).json({ message: "User does not have an associated business" });
+        }
+
+        // Crear el producto y asociarlo al negocio del usuario
+        const product = await ProductRepository.create({
+            name,
+            description,
+            price,
+            stock,
+            category,
+            country,
+            state,
+            technicalSpecs,
+            business: user.business // Asociar el producto al negocio del usuario
+        });
+
+        // Agregar el producto al array de productos del negocio
+        await BusinessRepository.addProduct(user.business, product._id);
+
+        res.status(201).json(product);
+    } catch (error) {
+        res.status(500).json({ message: "Error creating product", error: error.message });
+    }
+};
+
 
 export const getProducts = async (req, res) => {
     try {

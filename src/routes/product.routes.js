@@ -96,7 +96,7 @@ router.get("/:id", getProduct);
  *         description: Error en la solicitud
  */
 
-router.post("/", createProduct);
+router.post("/", authMiddleware,createProduct);
 
 /**
  * @swagger
