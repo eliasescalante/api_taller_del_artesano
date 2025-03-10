@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import { engine } from "express-handlebars";
 import connectDB from "./config/db.js";
 import businessRoutes from "./routes/business.routes.js";
@@ -13,6 +14,13 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Configuración de CORS
+app.use(cors({
+  origin: "*",  // cualquier origen
+  methods: ["GET", "POST", "PUT", "DELETE"],  // Métodos permitidos
+  allowedHeaders: ["Content-Type", "Authorization"],  // Headers permitidos
+}));
 
 // Conectar a MongoDB
 connectDB();
