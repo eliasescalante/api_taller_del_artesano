@@ -36,6 +36,14 @@ class BusinessRepository {
             { new: true }
         ).populate("products");
     }
+
+    async addSoldProduct(businessId, soldProduct) {
+        return await Business.findByIdAndUpdate(
+            businessId,
+            { $push: { soldProducts: soldProduct } },
+            { new: true }
+        ).populate("soldProducts.product");
+    }
 }
 
 export default new BusinessRepository();

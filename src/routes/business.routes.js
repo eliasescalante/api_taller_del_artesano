@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { getBusinesses, getBusiness, createBusiness, updateBusiness, deleteBusiness, addProductToBusiness, removeProductFromBusiness } from "../controllers/businessController.js";
+import { getBusinesses, getBusiness, createBusiness, updateBusiness, deleteBusiness, addProductToBusiness, removeProductFromBusiness, getSoldProducts, getBusinessProducts} from "../controllers/businessController.js";
+import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = Router();
 
@@ -9,7 +10,6 @@ const router = Router();
  *   name: Business
  *   description: Operaciones sobre negocios
  */
-
 /**
  * @swagger
  * /businesses:
@@ -33,9 +33,7 @@ const router = Router();
  *                     type: string
  *                     example: "Mi Negocio"
  */
-
 router.get("/", getBusinesses);
-
 /**
  * @swagger
  * /businesses/{id}:
@@ -55,9 +53,7 @@ router.get("/", getBusinesses);
  *       404:
  *         description: Negocio no encontrado
  */
-
 router.get("/:id", getBusiness);
-
 /**
  * @swagger
  * /businesses:
@@ -86,9 +82,7 @@ router.get("/:id", getBusiness);
  *       400:
  *         description: Error en la solicitud
  */
-
 router.post("/", createBusiness);
-
 /**
  * @swagger
  * /businesses/{id}:
@@ -125,7 +119,6 @@ router.post("/", createBusiness);
  *         description: Negocio no encontrado
  */
 router.put("/:id", updateBusiness);
-
 /**
  * @swagger
  * /businesses/{id}:
@@ -145,9 +138,7 @@ router.put("/:id", updateBusiness);
  *       404:
  *         description: Negocio no encontrado
  */
-
 router.delete("/:id", deleteBusiness);
-
 /**
  * @swagger
  * /businesses/{businessId}/addProduct/{productId}:
@@ -171,10 +162,8 @@ router.delete("/:id", deleteBusiness);
  *       200:
  *         description: Producto agregado al negocio correctamente
  */
-
 // Rutas para manejar productos en un negocio
 router.put("/:businessId/addProduct/:productId", addProductToBusiness);
-
 /**
  * @swagger
  * /businesses/{businessId}/removeProduct/{productId}:
@@ -199,5 +188,108 @@ router.put("/:businessId/addProduct/:productId", addProductToBusiness);
  *         description: Producto eliminado del negocio correctamente
  */
 router.put("/:businessId/removeProduct/:productId", removeProductFromBusiness);
+/**
+ * @swagger
+ * /businesses/{id}/sold-products:
+ *   get:
+ *     summary: Obtener los productos vendidos de un negocio
+ *     description: Este endpoint devuelve una lista de los productos vendidos por un negocio específico.
+ *     tags: [Business]
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID del negocio
+ *         schema:
+ *           type: string
+ *           example: "65a2d0b2d7e6e9001567b456"
+ *     responses:
+ *       200:
+ *         description: Lista de productos vendidos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/SoldProduct'
+ *       404:
+ *         description: Negocio no encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Business not found"
+ *       500:
+ *         description: Error del servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Error retrieving sold products"
+ *                 error:
+ *                   type: string
+ *                   example: "Error message"
+ */
+router.get("/:id/sold-products", authMiddleware, getSoldProducts);
+
+/**
+ * @swagger
+ * /businesses/{id}/products:
+ *   get:
+ *     summary: Obtener todos los productos de un negocio específico
+ *     description: Este endpoint devuelve todos los productos asociados a un negocio específico, utilizando el ID del negocio.
+ *     tags: [Business]
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID del negocio
+ *         schema:
+ *           type: string
+ *           example: "65a2d0b2d7e6e9001567b456"
+ *     responses:
+ *       200:
+ *         description: Lista de productos del negocio
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Product'
+ *       404:
+ *         description: Negocio no encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Business not found"
+ *       500:
+ *         description: Error del servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Error retrieving business products"
+ *                 error:
+ *                   type: string
+ *                   example: "Error message"
+ */
+router.get("/:id/products", authMiddleware, getBusinessProducts);
 
 export default router;

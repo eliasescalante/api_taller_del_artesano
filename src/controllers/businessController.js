@@ -89,3 +89,37 @@ export const removeProductFromBusiness = async (req, res) => {
         res.status(500).json({ message: "Error removing product from business", error: error.message });
     }
 };
+
+export const getSoldProducts = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const business = await BusinessRepository.getById(id);
+        if (!business) {
+            return res.status(404).json({ message: "Business not found" });
+        }
+        res.json(business.soldProducts);
+    } catch (error) {
+        res.status(500).json({ message: "Error retrieving sold products", error: error.message });
+    }
+};
+
+
+export const getBusinessProducts = async (req, res) => {
+    const { id } = req.params; // ID del negocio
+
+    try {
+        // Obtener el negocio por su ID
+        const business = await BusinessRepository.getById(id);
+
+        if (!business) {
+            return res.status(404).json({ message: "Business not found" });
+        }
+
+        // Obtener los productos del negocio
+        const products = business.products;
+
+        res.json(products);
+    } catch (error) {
+        res.status(500).json({ message: "Error retrieving business products", error: error.message });
+    }
+};
