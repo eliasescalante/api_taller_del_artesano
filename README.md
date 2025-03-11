@@ -12,8 +12,11 @@ Este proyecto establece una estructura básica para una API RESTful que permite 
 - **Express.js**: Framework para Node.js
 - **MongoDB**: Base de datos NoSQL
 - **Mongoose**: ODM para MongoDB
-- **Handlebars**: Motor de plantillas
 - **Nodemon**: Herramienta para desarrollo
+- **Swagger**: documentacion.
+- **CORS**: integracion front.
+- **Cloudinary**: picture
+    
 
 ## 💻 Requisitos
 
