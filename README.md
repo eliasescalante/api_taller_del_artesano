@@ -6,7 +6,7 @@ Este repositorio contiene el servidor para la simulación de nuestro equipo.
 
 Este proyecto establece una estructura básica para una API RESTful que permite la gestión de usuarios y proporciona documentación automática utilizando Handlebars.
 
-## 🛠️ Tecnologías Utilizadas
+## 🛠️ Tecnologías Utilizadas en el Backend
 
 - **Node.js**: JavaScript runtime
 - **Express.js**: Framework para Node.js
@@ -16,7 +16,15 @@ Este proyecto establece una estructura básica para una API RESTful que permite 
 - **Swagger**: documentacion.
 - **CORS**: integracion front.
 - **Cloudinary**: picture
-    
+
+## 💻  Tecnologías Utilizadas en el Frontend
+
+- **Angular**: Framework para desarrollo de interfaces de usuario
+- **Angular Material**: Componentes de interfaz de usuario
+- **Angular CLI**: Herramienta para desarrollo
+- **Bootstrap**: Framework de diseño web
+- **Angular Flex Layout**: Layout responsive
+- **Angular Router**: Manejo de rutas
 
 ## 💻 Requisitos
 
@@ -43,6 +51,17 @@ npm start
 | **Elías Escalante** | Backend Developer |
 | **Oscar Carrasco**  | Backend Developer |
 
+👥 Miembros del Equipo Frontend
+
+| Nombre              | Rol               |
+|---------------------|-------------------|
+| **Federico Barzola** | Frontend Developer |
+
+👥 Miembros del Equipo QA
+
+| Nombre              | Rol               |
+|---------------------|-------------------|
+| **Wara Pacajes** | Tester |
 
 ### Capturas
 
