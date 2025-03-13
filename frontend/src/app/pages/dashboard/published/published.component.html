@@ -1,0 +1,68 @@
+<!-- published.component.html -->
+<div class="container-fluid p-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h4 mb-0">Tus productos</h1>
+        <a class="btn btn-primary" routerLink="/dashboard/vendor">
+            <i class="bi bi-plus-circle me-2"></i>Nuevo producto
+        </a>
+    </div>
+
+    <p class="text-muted mb-4">
+        Aquí podrás subir productos, gestionar los que ya tienes y destacarlos para venderlos antes.
+    </p>
+
+    <!-- Pestañas -->
+    <ul class="nav nav-tabs mb-4">
+        <li class="nav-item">
+            <button class="nav-link hover-primary" [class.active]="activeTab === 'venta'" (click)="activeTab = 'venta'">
+                <i class="bi bi-tag me-2"></i>En venta
+            </button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link hover-primary" [class.active]="activeTab === 'vendidos'"
+                (click)="activeTab = 'vendidos'">
+                <i class="bi bi-currency-dollar me-2"></i>Vendidos
+            </button>
+        </li>
+    </ul>
+
+<!-- Pestaña En venta -->
+<div *ngIf="activeTab === 'venta'">
+    <!-- Agrega comentario de ubicación -->
+    <!-- PRODUCTOS_EN_VENTA_SE_RENDERIZAN_AQUÍ -->
+    
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <!-- Tarjetas de productos -->
+      <div class="col" *ngFor="let producto of productosEnVenta">
+        <!-- ... contenido existente ... -->
+      </div>
+      
+      <!-- Mensaje sin productos -->
+      <div class="col-12" *ngIf="productosEnVenta.length === 0">
+        <div class="alert alert-info">
+          No tienes productos publicados. ¡Crea tu primer producto!
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Pestaña Vendidos -->
+  <div *ngIf="activeTab === 'vendidos'">
+    <!-- Agrega comentario de ubicación -->
+    <!-- PRODUCTOS_VENDIDOS_SE_RENDERIZAN_AQUÍ -->
+    
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <!-- Tarjetas de vendidos -->
+      <div class="col" *ngFor="let producto of productosVendidos">
+        <!-- ... contenido existente ... -->
+      </div>
+      
+      <!-- Mensaje sin ventas -->
+      <div class="col-12" *ngIf="productosVendidos.length === 0">
+        <div class="alert alert-info">
+          Aún no has realizado ninguna venta
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

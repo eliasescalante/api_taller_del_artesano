@@ -1,0 +1,63 @@
+<!-- Navbar principal con offcanvas para todas las categorías -->
+<nav class="navbar navbar-light bg-light border-bottom category-sticky" >
+    <div class="container-fluid">
+        <!-- Agrupación del botón hamburguesa y las 3 categorías en el lado izquierdo -->
+        <div class="d-flex align-items-center">
+            <!-- Botón de menú hamburguesa siempre visible -->
+            <button class="btn btn-outline-secondary me-3" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasCategories" aria-controls="offcanvasCategories">
+                <span class="navbar-toggler-icon me-3"></span>
+                <span>Todas las categorías</span>
+            </button>
+            <!-- Tres categorías visibles en pantallas grandes -->
+            <ul class="navbar-nav flex-row d-none d-lg-flex mb-0">
+                <li class="nav-item me-3">
+                    <a class="nav-link" href="">Cerámica</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Madera</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Offcanvas que muestra TODAS las categorías -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasCategories"
+    aria-labelledby="offcanvasCategoriesLabel">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasCategoriesLabel">Categorías</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="">Ver todos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Cerámica</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Madera</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Pintura y Arte</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Joyería</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Cosmeticos Naturales</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="+">Accesorios para el Hogar</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Productos Ecológicos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Alimentos Artesanales</a>
+            </li>
+        </ul>
+    </div>
+</div>

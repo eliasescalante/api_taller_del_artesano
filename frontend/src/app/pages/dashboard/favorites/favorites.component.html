@@ -1,0 +1,77 @@
+<div class="container-fluid p-0">
+  <div class="row g-0">
+    <div class="col-12">
+      <!-- Pestañas -->
+      <ul class="nav nav-tabs mb-4">
+        <li class="nav-item">
+          <button class="nav-link hover-primary" 
+                  [class.active]="activeTab === 'products'"
+                  (click)="setActiveTab('products')">
+            <i class="bi bi-box-seam me-2"></i>Productos
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link hover-primary" 
+                  [class.active]="activeTab === 'profiles'"
+                  (click)="setActiveTab('profiles')">
+            <i class="bi bi-person-circle me-2"></i>Perfiles
+          </button>
+        </li>
+      </ul>
+
+      <!-- Contenido de pestañas -->
+      <div class="tab-content">
+        <!-- Pestaña Productos -->
+        <div *ngIf="activeTab === 'products'" class="tab-pane fade show active">
+          <!-- PRODUCTOS_FAVORITOS_AQUI -->
+          
+          <div *ngIf="favoriteProducts.length === 0" class="alert alert-info m-3">
+            No tienes productos favoritos guardados
+          </div>
+
+          <div class="row row-cols-1 row-cols-md-3 g-4" *ngIf="favoriteProducts.length > 0">
+            <div *ngFor="let product of favoriteProducts" class="col">
+              <div class="card h-100 hover-primary">
+                <img [src]="product.image" class="card-img-top" alt="Producto">
+                <div class="card-body">
+                  <h5 class="card-title">{{ product.name }}</h5>
+                  <p class="card-text text-muted">{{ product.price | currency }}</p>
+                </div>
+                <div class="card-footer bg-transparent">
+                  <button class="btn btn-outline-danger btn-sm">
+                    <i class="bi bi-heart-fill"></i> Quitar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pestaña Perfiles -->
+        <div *ngIf="activeTab === 'profiles'" class="tab-pane fade show active">
+          <!-- PERFILES_FAVORITOS_AQUI -->
+          
+          <div *ngIf="favoriteProfiles.length === 0" class="alert alert-info m-3">
+            No has guardado ningún perfil favorito
+          </div>
+
+          <div class="list-group" *ngIf="favoriteProfiles.length > 0">
+            <div *ngFor="let profile of favoriteProfiles" 
+                 class="list-group-item list-group-item-action hover-primary">
+              <div class="d-flex align-items-center">
+                <img [src]="profile.avatar" class="rounded-circle me-3" width="50" height="50" alt="Avatar">
+                <div class="flex-grow-1">
+                  <h6 class="mb-1">{{ profile.name }}</h6>
+                  <small class="text-muted">{{ profile.followers }} seguidores</small>
+                </div>
+                <button class="btn btn-outline-primary btn-sm">
+                  <i class="bi bi-person-check"></i> Siguiendo
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

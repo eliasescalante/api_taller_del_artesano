@@ -1,0 +1,50 @@
+<!-- Banner -->
+<main class="container py-3">
+    <!-- Contenedor de promociones con desplazamiento oculto -->
+    <div id="promo-container" class="position-relative overflow-hidden">
+
+        <!-- imagen 1 -->
+        <div class="promo" [class.active]="currentPromo === 1">
+            <div class="row align-items-center text-center text-md-start">
+                <!-- Posición normal -->
+                <div class="col-md-5">
+                    <img alt="People organizing storage" class="img-fluid rounded shadow-lg" height="250"
+                        src="https://storage.googleapis.com/a1aa/image/I_QN89S4ohCIswQ2fTviqlWODuUg5_H-3CxEC4DNtvU.jpg"
+                        width="400" />
+                </div>
+                <!-- Texto y botón de imagen 1 -->
+                <div class="col-md-7">
+                    <h2 class="fw-bold text-primary">
+                        ¿Quién necesita Mercado Libre, teniendo
+                        <span class="text-success">{{ title }}</span>?
+                    </h2>
+                    <button class="btn btn-success btn-lg mt-3 shadow">
+                        Vende lo que no usas
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- imagen 2 -->
+        <div class="promo" [class.active]="currentPromo === 2">
+            <div class="row align-items-center text-center text-md-start">
+                <!-- posición invertida  -->
+                <div class="col-md-5 order-md-2">
+                    <img alt="People organizing storage" class="img-fluid rounded shadow-lg" height="250"
+                        src="https://storage.googleapis.com/a1aa/image/I_QN89S4ohCIswQ2fTviqlWODuUg5_H-3CxEC4DNtvU.jpg"
+                        width="400" />
+                </div>
+                <!-- Texto y botón de imagen 2 -->
+                <div class="col-md-7 order-md-1">
+                    <h2 class="fw-bold text-danger">
+                        Compra y vende <span class="text-warning">artículos Artesanales</span>
+                    </h2>
+                    <button class="btn btn-warning btn-lg mt-3 shadow">
+                        Saber más
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>

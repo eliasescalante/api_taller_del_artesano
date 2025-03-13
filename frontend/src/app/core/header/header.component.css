@@ -1,0 +1,12 @@
+.header-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    transform: translateY(0);
+  }
+  
+  .header-sticky.hidden {
+    transform: translateY(-100%);
+  }
+  

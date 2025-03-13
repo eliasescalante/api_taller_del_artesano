@@ -1,0 +1,30 @@
+.hover-primary:hover {
+    background-color: #e9f5ff;
+    color: #0d6efd !important;
+    transform: translateX(3px);
+    border-left-color: #0d6efd !important;
+}
+
+.nav-link.active {
+    background-color: #e9f5ff !important;
+    color: #0d6efd !important;
+    border-left-color: #0d6efd !important;
+    font-weight: 500;
+}
+
+.hover-scale:hover img {
+    transform: scale(1.05);
+}
+
+.transition {
+    transition: all 0.2s ease-in-out;
+}
+
+.z-3 {
+    z-index: 1031;
+}
+
+/* Asegurar que el sidebar mobile tenga el ancho correcto */
+.offcanvas-start {
+    width: 250px;
+}

@@ -1,0 +1,191 @@
+[
+    {
+        "name": "Estados Unidos",
+        "states": [
+            { "name": "California" },
+            { "name": "Texas" },
+            { "name": "Nueva York" },
+            { "name": "Florida" },
+            { "name": "Illinois" }
+        ]
+    },
+    {
+        "name": "China",
+        "states": [
+            { "name": "Pekín" },
+            { "name": "Shanghái" },
+            { "name": "Guangdong" },
+            { "name": "Zhejiang" },
+            { "name": "Jiangsu" }
+        ]
+    },
+    {
+        "name": "Rusia",
+        "states": [
+            { "name": "Moscú" },
+            { "name": "San Petersburgo" },
+            { "name": "Óblast de Sverdlovsk" },
+            { "name": "Krai de Krasnodar" },
+            { "name": "Tatarstán" }
+        ]
+    },
+    {
+        "name": "Alemania",
+        "states": [
+            { "name": "Baviera" },
+            { "name": "Berlín" },
+            { "name": "Renania del Norte-Westfalia" },
+            { "name": "Baden-Wurtemberg" },
+            { "name": "Hesse" }
+        ]
+    },
+    {
+        "name": "Francia",
+        "states": [
+            { "name": "Isla de Francia" },
+            { "name": "Provenza-Alpes-Costa Azul" },
+            { "name": "Auvernia-Ródano-Alpes" },
+            { "name": "Occitania" },
+            { "name": "Nueva Aquitania" }
+        ]
+    },
+    {
+        "name": "Reino Unido",
+        "states": [
+            { "name": "Inglaterra" },
+            { "name": "Escocia" },
+            { "name": "Gales" },
+            { "name": "Irlanda del Norte" }
+        ]
+    },
+    {
+        "name": "Japón",
+        "states": [
+            { "name": "Tokio" },
+            { "name": "Osaka" },
+            { "name": "Kanagawa" },
+            { "name": "Aichi" },
+            { "name": "Hokkaido" }
+        ]
+    },
+    {
+        "name": "India",
+        "states": [
+            { "name": "Maharashtra" },
+            { "name": "Uttar Pradesh" },
+            { "name": "Delhi" },
+            { "name": "Karnataka" },
+            { "name": "Tamil Nadu" }
+        ]
+    },
+    {
+        "name": "Brasil",
+        "states": [
+            { "name": "São Paulo" },
+            { "name": "Río de Janeiro" },
+            { "name": "Minas Gerais" },
+            { "name": "Bahía" },
+            { "name": "Río Grande del Sur" }
+        ]
+    },
+    {
+        "name": "Canadá",
+        "states": [
+            { "name": "Ontario" },
+            { "name": "Quebec" },
+            { "name": "Columbia Británica" },
+            { "name": "Alberta" },
+            { "name": "Manitoba" }
+        ]
+    },
+    {
+        "name": "Italia",
+        "states": [
+            { "name": "Lombardía" },
+            { "name": "Lacio" },
+            { "name": "Campania" },
+            { "name": "Sicilia" },
+            { "name": "Véneto" }
+        ]
+    },
+    {
+        "name": "España",
+        "states": [
+            { "name": "Madrid" },
+            { "name": "Cataluña" },
+            { "name": "Andalucía" },
+            { "name": "Comunidad Valenciana" },
+            { "name": "Galicia" }
+        ]
+    },
+    {
+        "name": "México",
+        "states": [
+            { "name": "Ciudad de México" },
+            { "name": "Jalisco" },
+            { "name": "Nuevo León" },
+            { "name": "Veracruz" },
+            { "name": "Puebla" }
+        ]
+    },
+    {
+        "name": "Australia",
+        "states": [
+            { "name": "Nueva Gales del Sur" },
+            { "name": "Victoria" },
+            { "name": "Queensland" },
+            { "name": "Australia Occidental" },
+            { "name": "Australia Meridional" }
+        ]
+    },
+    {
+        "name": "Corea del Sur",
+        "states": [
+            { "name": "Seúl" },
+            { "name": "Busan" },
+            { "name": "Incheon" },
+            { "name": "Gyeonggi" },
+            { "name": "Gyeongsang del Sur" }
+        ]
+    },
+    {
+        "name": "Argentina",
+        "states": [
+            { "name": "Buenos Aires" },
+            { "name": "Córdoba" },
+            { "name": "Santa Fe" },
+            { "name": "Mendoza" },
+            { "name": "Tucumán" }
+        ]
+    },
+    {
+        "name": "Egipto",
+        "states": [
+            { "name": "El Cairo" },
+            { "name": "Alejandría" },
+            { "name": "Giza" },
+            { "name": "Sharqia" },
+            { "name": "Luxor" }
+        ]
+    },
+    {
+        "name": "Sudáfrica",
+        "states": [
+            { "name": "Gauteng" },
+            { "name": "Cabo Occidental" },
+            { "name": "KwaZulu-Natal" },
+            { "name": "Cabo Oriental" },
+            { "name": "Limpopo" }
+        ]
+    },
+    {
+        "name": "Turquía",
+        "states": [
+            { "name": "Estambul" },
+            { "name": "Ankara" },
+            { "name": "Esmirna" },
+            { "name": "Bursa" },
+            { "name": "Antalya" }
+        ]
+    }
+]

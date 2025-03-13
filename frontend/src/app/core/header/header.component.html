@@ -1,0 +1,12 @@
+<header class="bg-light border-bottom header-sticky" [class.hidden]="isHidden">
+    <div class="container-fluid d-flex justify-content-between align-items-center py-2">
+        <!-- Sección del logo y el nombre -->
+        <div class="d-flex align-items-center">
+            <i class="fa-solid fa-cart-shopping me-2"></i>
+            <span class="h5 mb-0">{{ title }}</span>
+        </div>
+        <div class="d-flex align-items-center">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</header>

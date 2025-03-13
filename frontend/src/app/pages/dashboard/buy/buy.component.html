@@ -1,0 +1,57 @@
+<!-- buy.component.html -->
+<div class="container-fluid p-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="mb-0">Compras</h2>
+  </div>
+
+  <!-- Pestañas -->
+  <ul class="nav nav-tabs mb-4">
+    <li class="nav-item">
+        <button class="nav-link hover-primary" 
+             [class.active]="activeTab === 'en-curso'"
+             (click)="activeTab = 'en-curso'">
+             <i class="bi bi-hourglass-split me-2"></i>En curso
+        </button>
+    </li>
+    <li class="nav-item">
+        <button class="nav-link hover-primary" 
+             [class.active]="activeTab === 'finalizadas'"
+             (click)="activeTab = 'finalizadas'">
+             <i class="bi bi-check2-circle me-2"></i>Finalizadas
+        </button>
+    </li>
+</ul>
+
+  <!-- Contenido de pestañas -->
+  <div *ngIf="activeTab === 'en-curso'">
+      <div class="alert alert-info" *ngIf="comprasEnCurso.length === 0">
+          Sin compras en curso todavía
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-2 g-4" *ngIf="comprasEnCurso.length > 0">
+          <!-- Tarjetas de compras en curso -->
+          <div class="col" *ngFor="let compra of comprasEnCurso">
+              <div class="card h-100 shadow-sm">
+                  <div class="card-body">
+                      <h5 class="card-title">Compra #{{compra.id}}</h5>
+                      <p class="card-text">Estado: {{compra.estado}}</p>
+                      <p class="card-text">Fecha: {{compra.fecha | date}}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+<!-- Contenido de pestañas Finalizadas -->
+<div *ngIf="activeTab === 'finalizadas'">
+    <!-- Agrega este bloque de mensaje -->
+    <div class="alert alert-info" *ngIf="comprasFinalizadas.length === 0">
+      No tienes compras finalizadas todavía
+    </div>
+  
+    <!-- Modifica el contenedor existente para mostrar solo con elementos -->
+    <div class="row row-cols-1 row-cols-md-2 g-4" *ngIf="comprasFinalizadas.length > 0">
+      <!-- ... contenido existente ... -->
+    </div>
+  </div>
+</div>

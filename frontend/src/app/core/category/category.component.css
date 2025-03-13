@@ -1,0 +1,12 @@
+.category-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    transition: transform 0.3s ease;
+    transform: translateY(0);
+  }
+  
+  .category-sticky.hidden {
+    transform: translateY(-100%);
+  }
+  

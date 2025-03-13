@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+
+    /* Ajustá el valor según lo que necesites */
+    background-color: #f0f0f0;
+    /* Solo como referencia */
+
+    overflow-x: hidden;
+}

@@ -1,0 +1,158 @@
+<div class="container my-5">
+    <h1 class="text-center mb-4">Sube tu anuncio</h1>
+
+    <!-- Formulario de Publicación -->
+    <div class="bg-light p-4 rounded shadow-sm">
+        <form *ngIf="formVisible" (ngSubmit)="onSubmit()" [formGroup]="productForm">
+            <div class="row g-3">
+                <!-- Columna Izquierda -->
+                <div class="col-md-6">
+                    <!-- Nombre -->
+                    <div class="mb-3">
+                        <label class="form-label">Nombre del Producto</label>
+                        <input type="text" class="form-control" formControlName="nombre"
+                            placeholder="Ej: Collar de plata">
+                    </div>
+
+                    <!-- Precio -->
+                    <div class="mb-3">
+                        <label class="form-label">Precio (USD)</label>
+                        <input type="number" class="form-control" formControlName="precio" placeholder="Ej: 50" min="1"
+                            (keypress)="preventNegative($event)">
+                    </div>
+
+                    <!-- Descripción -->
+                    <div class="mb-3">
+                        <label class="form-label">Descripción</label>
+                        <textarea class="form-control" formControlName="descripcion" rows="3"
+                            placeholder="Describe tu producto..."></textarea>
+                    </div>
+
+                    <!-- Imagen -->
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Imagen del Producto</label>
+
+                        <!-- Opción: Subir archivo -->
+                        <div *ngIf="!useImageUrl" class="card border-0 shadow-sm p-3">
+                            <div class="mb-3">
+                                <input type="file" class="form-control" (change)="onFileSelected($event)"
+                                    accept="image/*">
+                                <small class="form-text text-muted">Formatos aceptados: JPG, PNG, JPEG</small>
+                            </div>
+                            <button type="button" class="btn btn-outline-primary w-100" (click)="toggleImageInput()">
+                                <i class="bi bi-link-45deg me-2"></i> Usar URL en su lugar
+                            </button>
+                        </div>
+
+                        <!-- Opción: Usar URL -->
+                        <div *ngIf="useImageUrl" class="card border-0 shadow-sm p-3">
+                            <div class="mb-3">
+                                <input type="url" class="form-control" formControlName="imagen"
+                                    placeholder="Ej: https://ejemplo.com/imagen.jpg">
+                                <small class="form-text text-muted">URL válida requerida</small>
+                            </div>
+                            <button type="button" class="btn btn-outline-primary w-100" (click)="toggleImageInput()">
+                                <i class="bi bi-upload me-2"></i> Subir imagen local
+                            </button>
+                        </div>
+
+                        <!-- Vista previa -->
+                        <div *ngIf="imagePreview" class="mt-4 text-center">
+                            <div class="card border-0 shadow-sm p-3">
+                                <h6 class="fw-bold mb-3">Vista previa</h6>
+                                <div class="d-flex justify-content-center">
+                                    <div style="width: 150px; height: 150px; overflow: hidden;" class="rounded">
+                                        <img [src]="imagePreview" alt="Vista previa"
+                                            class="img-fluid h-100 w-100 object-fit-cover">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha -->
+                <div class="col-md-6">
+                    <!-- Categoría -->
+                    <div class="mb-3">
+                        <label class="form-label">Categoría</label>
+                        <select class="form-select" formControlName="categoria">
+                            <option value="">Seleccione categoría</option>
+                            <option value="Cerámica">Cerámica</option>
+                            <option value="Madera">Madera</option>
+                            <option value="Pintura y Arte">Pintura y Arte</option>
+                            <option value="Joyería">Joyería</option>
+                            <option value="Cosméticos Naturales">Cosméticos Naturales</option>
+                            <option value="Accesorios para el Hogar">Accesorios para el Hogar</option>
+                            <option value="Productos Ecológicos">Productos Ecológicos</option>
+                            <option value="Alimentos Artesanales">Alimentos Artesanales</option>
+                        </select>
+                    </div>
+
+                    <!-- Stock -->
+                    <div class="mb-3">
+                        <label class="form-label">Stock disponible</label>
+                        <input type="number" class="form-control" formControlName="stock" min="0" placeholder="Ej: 10"
+                            (keypress)="preventNegative($event)">
+                    </div>
+
+                    <!-- País -->
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">País</label>
+                        <select class="form-select" formControlName="country"
+                            [class.is-invalid]="productForm.get('country')?.invalid && productForm.get('country')?.touched">
+                            <option value="" disabled selected>Selecciona país</option>
+                            <option *ngFor="let country of countries" [value]="country.name">
+                                {{ country.name }}
+                            </option>
+                        </select>
+                        <div *ngIf="productForm.get('country')?.invalid && productForm.get('country')?.touched"
+                            class="invalid-feedback">
+                            Selección de país requerida
+                        </div>
+                    </div>
+
+                    <!-- Provincia/Estado -->
+                    <div class="mb-3" *ngIf="states.length > 0">
+                        <label class="form-label fw-bold">Provincia/Estado</label>
+                        <select class="form-select" formControlName="state"
+                            [class.is-invalid]="productForm.get('state')?.invalid && productForm.get('state')?.touched">
+                            <option value="" disabled selected>Selecciona provincia</option>
+                            <option *ngFor="let state of states" [value]="state.name">
+                                {{ state.name }}
+                            </option>
+                        </select>
+                        <div *ngIf="productForm.get('state')?.invalid && productForm.get('state')?.touched"
+                            class="invalid-feedback">
+                            Selección de provincia requerida
+                        </div>
+                    </div>
+
+                    <!-- Especificaciones -->
+                    <div class="mb-3">
+                        <label class="form-label">Especificaciones técnicas</label>
+                        <textarea class="form-control" formControlName="especificaciones" rows="2"
+                            placeholder="Materiales, dimensiones, etc..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="row mt-4">
+                <div class="col-12 text-end">
+                    <button type="button" class="btn btn-outline-danger me-2" (click)="toggleForm()">
+                        <i class="bi bi-x-circle me-2"></i> Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary" [disabled]="!productForm.valid">
+                        <i class="bi bi-check-circle me-2"></i> Publicar
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Botón para mostrar formulario -->
+        <button *ngIf="!formVisible" (click)="toggleForm()" class="btn btn-success w-100 mt-3">
+            <i class="bi bi-plus-lg me-2"></i> Crear nuevo anuncio
+        </button>
+    </div>
+</div>

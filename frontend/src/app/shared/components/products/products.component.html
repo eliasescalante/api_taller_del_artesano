@@ -1,0 +1,63 @@
+<div class="row g-1">
+  <div class="col-4 col-md-3 col-lg-2" *ngFor="let product of products; trackBy: trackByProductId">
+    <div class="card shadow-sm border-0 rounded text-center"
+      (click)="selectedProductId !== product.id && showDetails.emit(product)"
+      style="width: 100%; font-size: 0.85rem; cursor: pointer;">
+      <div class="ratio ratio-1x1">
+        <img *ngIf="product.imagen" [src]="product.imagen" class="card-img-top object-fit-cover"
+          alt="{{ product.nombre }}">
+      </div>
+      <div class="card-body p-1">
+        <h6 class="card-title fw-bold text-primary mb-1">{{ product.nombre }}</h6>
+        <p class="card-text text-muted small mb-1">
+          {{ product.descripcion || 'Sin descripción' }}
+        </p>
+        <p class="card-text text-muted small mb-1">
+          <i class="bi bi-shop me-1"></i>
+          {{ vendedorNames[product.vendedorId || 0] || 'Anónimo' }}
+        </p>
+        <p class="card-text fw-semibold text-success mb-1">${{ product.precio }}</p>
+        <div class="d-flex justify-content-center gap-1">
+          <div *ngIf="selectedProductId === product.id" class="quantity-controls d-flex align-items-center gap-2">
+            <button class="btn btn-sm py-0 px-2" [class.btn-outline-secondary]="selectedQuantity > 1"
+              [class.btn-secondary]="selectedQuantity <= 1" [class.text-white]="selectedQuantity <= 1"
+              (click)="adjustQuantity.emit(-1); $event.stopPropagation()" [disabled]="selectedQuantity <= 1">
+              -
+            </button>
+            <span class="quantity">{{ selectedQuantity }}</span>
+            <button class="btn btn-sm py-0 px-2" [class.btn-outline-secondary]="selectedQuantity < maxStock"
+              [class.btn-secondary]="selectedQuantity >= maxStock" [disabled]="selectedQuantity >= maxStock"
+              (click)="adjustQuantity.emit(1); $event.stopPropagation()">
+              +
+            </button>
+            <button class="btn btn-sm btn-success ms-2"
+              (click)="confirmAddToCart.emit(product); $event.stopPropagation()">
+              ✓
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="cancelSelection.emit(); $event.stopPropagation()">
+              <i class="bi bi-x"></i>
+            </button>
+          </div>
+          <button *ngIf="isAuthenticated && selectedProductId !== product.id"
+            (click)="showQuantitySelector.emit({ productId: product.id, event: $event })"
+            class="btn btn-sm btn-primary p-1">
+            <i class="bi bi-cart-plus"></i> Añadir
+          </button>
+          <!-- Botón de favoritos -->
+          <button *ngIf="isAuthenticated" 
+          (click)="toggleFav.emit(product); $event.stopPropagation()" 
+          [ngClass]="{'btn-danger': isFavorite(product), 'btn-outline-secondary': !isFavorite(product)}" 
+          class="btn btn-sm p-1">
+          <i [ngClass]="{'bi-heart-fill': isFavorite(product), 'bi-heart': !isFavorite(product)}"></i>
+          Favoritos
+        </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Solo muestra mensaje si hay query y 0 resultados -->
+<div *ngIf="products.length === 0 && searchQuery" class="alert alert-warning">
+  No se encontraron productos para "{{ searchQuery }}"
+</div>

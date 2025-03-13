@@ -1,0 +1,135 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow position-relative">
+        <button type="button" class="btn-close position-absolute top-0 end-0 m-2" aria-label="Close" (click)="goHome()"></button>
+
+        <div class="card-body">
+          <ul class="nav nav-tabs mb-3">
+            <li class="nav-item">
+              <button class="nav-link" [class.active]="isLogin()" (click)="toggleMode(true)">
+                Iniciar Sesión
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" [class.active]="!isLogin()" (click)="toggleMode(false)">
+                Registrarse
+              </button>
+            </li>
+          </ul>
+
+          <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+            <!-- Campos comunes -->
+            <div class="mb-2">
+              <label for="email" class="form-label">Correo</label>
+              <input 
+                id="email" 
+                formControlName="email" 
+                type="email" 
+                class="form-control"
+                [class.is-invalid]="authForm.get('email')?.invalid && (authForm.get('email')?.touched || authForm.get('email')?.dirty)"
+                placeholder="tuCorreo@ejemplo.com"
+                [title]="getEmailTooltip()"
+              >
+            </div>
+
+            <div class="mb-2">
+              <label for="password" class="form-label">Contraseña</label>
+              <div class="input-group">
+                <input 
+                  id="password" 
+                  formControlName="password" 
+                  [type]="showPassword ? 'text' : 'password'"
+                  class="form-control" 
+                  placeholder="Contraseña"
+                  [class.is-invalid]="authForm.get('password')?.invalid && (authForm.get('password')?.touched || authForm.get('password')?.dirty)"
+                  [title]="getPasswordTooltip()"
+                >
+                <button type="button" class="btn btn-outline-secondary" (click)="toggleShowPassword()">
+                  <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Campos de registro -->
+            <ng-container *ngIf="!isLogin()">
+              <div class="mb-2">
+                <label for="name" class="form-label">Nombre</label>
+                <input 
+                  id="name" 
+                  formControlName="name" 
+                  type="text" 
+                  class="form-control"
+                  [class.is-invalid]="authForm.get('name')?.touched && authForm.get('name')?.invalid"
+                  placeholder="Tu nombre"
+                  [title]="getNameTooltip()"
+                >
+              </div>
+
+              <div class="mb-2">
+                <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+                <div class="input-group">
+                  <input 
+                    id="confirmPassword" 
+                    formControlName="confirmPassword" 
+                    [type]="showConfirmPassword ? 'text' : 'password'"
+                    class="form-control" 
+                    placeholder="Confirmar contraseña"
+                    [class.is-invalid]="authForm.get('confirmPassword')?.invalid || authForm.hasError('mismatch')"
+                    [title]="getConfirmPasswordTooltip()"
+                  >
+                  <button type="button" class="btn btn-outline-secondary" (click)="toggleShowConfirmPassword()">
+                    <i class="bi" [ngClass]="showConfirmPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Rol y nombre del negocio -->
+              <div class="mb-2">
+                <label for="role" class="form-label">¿Qué vas a hacer?</label>
+                <select 
+                  id="role" 
+                  formControlName="role" 
+                  class="form-select" 
+                  (change)="onRoleChange($event)"
+                  [title]="getRoleTooltip()"
+                >
+                  <option value="cliente">Ir de compras</option>
+                  <option value="vendedor">Vender mis productos</option>
+                </select>
+              </div>
+
+              <ng-container *ngIf="authForm.get('role')?.value === 'vendedor'">
+                <div class="mb-2">
+                  <label for="businessName" class="form-label">Nombre del Negocio</label>
+                  <input 
+                    id="businessName" 
+                    formControlName="businessName" 
+                    type="text" 
+                    class="form-control"
+                    [class.is-invalid]="authForm.get('businessName')?.touched && authForm.get('businessName')?.invalid"
+                    placeholder="Nombre de tu negocio"
+                    [title]="getBusinessNameTooltip()"
+                  >
+                </div>
+              </ng-container>
+            </ng-container>
+
+            <!-- Mensaje de error -->
+            <div *ngIf="authError && isLogin()" class="alert alert-danger text-center mb-2">
+              {{ authError }}
+              <br>
+              <span>¿No tienes cuenta?
+                <button class="btn btn-link p-0" (click)="toggleMode(false)">Regístrate aquí</button>
+              </span>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mt-3" [disabled]="isLoading()">
+              {{ isLogin() ? 'Iniciar Sesión' : 'Registrarse' }}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

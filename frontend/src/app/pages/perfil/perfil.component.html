@@ -1,0 +1,119 @@
+<!-- Modo vista: Una sola tarjeta con cover, imagen de perfil y detalles -->
+<div *ngIf="!editMode()" class="container mt-4">
+  <div class="card shadow-lg rounded-4 overflow-hidden" style="border: none;">
+    <!-- Portada completa -->
+    <div class="profile-banner position-relative">
+      <img [src]="usuario().coverPhoto || 'https://picsum.photos/id/1018/600/200'" alt="Cover Photo" class="banner-img img-fluid w-100" style="height: 200px; object-fit: cover;">
+    </div>
+
+    <!-- Contenido principal con imagen de perfil a la izquierda -->
+    <div class="card-body d-flex flex-column flex-md-row align-items-center py-4 px-4">
+      <!-- Imagen de perfil -->
+      <div class="me-md-4 mb-3 mb-md-0">
+        <img [src]="usuario().profilePhoto || 'https://picsum.photos/id/1027/120/120'" alt="Profile Photo" class="rounded-circle border border-4 border-white shadow-sm" style="width: 140px; height: 140px;">
+      </div>
+
+      <!-- Información del perfil -->
+      <div class="flex-grow-1 text-center text-md-start">
+        <h2 class="card-title fw-bold mb-2">{{ usuario().username }}</h2>
+        <p class="card-text text-muted fst-italic">{{ usuario().bio }}</p>
+      </div>
+    </div>
+
+    <!-- Detalles adicionales con diseño moderno -->
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item d-flex align-items-center justify-content-between px-4 py-3 bg-light">
+        <span><i class="bi bi-envelope-fill me-2 text-primary"></i>Email</span>
+        <span class="text-secondary">{{ usuario().email }}</span>
+      </li>
+      <li class="list-group-item d-flex align-items-center justify-content-between px-4 py-3 bg-light" *ngIf="usuario().birthDate">
+        <span><i class="bi bi-calendar-fill me-2 text-success"></i>Fecha de nacimiento</span>
+        <span class="text-secondary">{{ usuario().birthDate }}</span>
+      </li>
+      <li class="list-group-item d-flex align-items-center justify-content-between px-4 py-3 bg-light" *ngIf="usuario().gender">
+        <span><i class="bi bi-gender-ambiguous me-2 text-warning"></i>Género</span>
+        <span class="text-secondary">{{ usuario().gender }}</span>
+      </li>
+      <li class="list-group-item d-flex align-items-center justify-content-between px-4 py-3 bg-light">
+        <span><i class="bi bi-geo-alt-fill me-2 text-danger"></i>Ubicación</span>
+        <span class="text-secondary">{{ usuario().location }}</span>
+      </li>
+      <li class="list-group-item d-flex align-items-center justify-content-between px-4 py-3 bg-light" *ngIf="usuario().businessName">
+        <span><i class="bi bi-building-fill me-2 text-info"></i>Empresa</span>
+        <span class="text-secondary">{{ usuario().businessName }}</span>
+      </li>
+    </ul>
+
+    <!-- Botón de edición con diseño flotante -->
+    <div class="position-relative">
+      <button (click)="toggleEditMode()" class="btn btn-primary  position-absolute bottom-0 start-50 translate-middle-x mb-4 px-5 py-2 shadow">
+        Editar Perfil
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modo edición: Una tarjeta para editar imágenes y demás datos -->
+<div *ngIf="editMode()" class="container mt-4">
+  <div class="card shadow-lg rounded-4 overflow-hidden" style="border: none;">
+    <div class="card-body p-4">
+      <h4 class="card-title text-center mb-4 fw-bold text-uppercase">Editar Perfil</h4>
+
+      <!-- Portada -->
+      <div class="mb-4 position-relative">
+        <label class="form-label fw-semibold text-muted">Portada:</label>
+        <div class="d-flex justify-content-center mb-2">
+          <img [src]="editUser.coverPhoto || usuario().coverPhoto || 'https://picsum.photos/id/1018/600/200'" alt="Cover Photo" class="img-fluid rounded-3 shadow-sm" style="max-height: 180px;">
+        </div>
+        <input type="file" class="form-control form-control-sm" (change)="onFileSelected($event, 'coverPhoto')">
+      </div>
+
+      <!-- Imagen de perfil -->
+      <div class="mb-4 position-relative">
+        <label class="form-label fw-semibold text-muted">Imagen de perfil:</label>
+        <div class="d-flex justify-content-center mb-2">
+          <img [src]="editUser.profilePhoto || usuario().profilePhoto || 'https://picsum.photos/id/1027/120/120'" alt="Profile Photo" class="rounded-circle shadow-sm" style="width: 120px; height: 120px;">
+        </div>
+        <input type="file" class="form-control form-control-sm" (change)="onFileSelected($event, 'profilePhoto')">
+      </div>
+
+      <!-- Formulario de edición -->
+      <form (ngSubmit)="saveUserData()">
+        <div class="mb-3">
+          <label class="form-label fw-semibold text-muted">Nombre:</label>
+          <input type="text" class="form-control form-control-sm" [(ngModel)]="editUser.username" name="username" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold text-muted">Email:</label>
+          <input type="email" class="form-control form-control-sm" [(ngModel)]="editUser.email" name="email" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold text-muted">Fecha de Nacimiento:</label>
+          <input type="date" class="form-control form-control-sm" [(ngModel)]="editUser.birthDate" name="birthDate">
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold text-muted">Género:</label>
+          <input type="text" class="form-control form-control-sm" [(ngModel)]="editUser.gender" name="gender">
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold text-muted">Ubicación:</label>
+          <input type="text" class="form-control form-control-sm" [(ngModel)]="editUser.location" name="location">
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold text-muted">Bio:</label>
+          <textarea class="form-control form-control-sm" [(ngModel)]="editUser.bio" name="bio" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold text-muted">Empresa:</label>
+          <input type="text" class="form-control form-control-sm" [(ngModel)]="editUser.businessName" name="businessName">
+        </div>
+
+        <!-- Acciones del formulario -->
+        <div class="text-center">
+          <button type="submit" class="btn btn-success  px-5 py-2 shadow me-3">Guardar</button>
+          <button type="button" class="btn btn-outline-secondary  px-5 py-2 shadow" (click)="cancelEditMode()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

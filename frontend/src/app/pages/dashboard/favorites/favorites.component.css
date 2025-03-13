@@ -1,0 +1,10 @@
+.nav-link.hover-primary:hover {
+  color: var(--bs-primary) !important;
+  background-color: rgba(var(--bs-primary-rgb), 0.05);
+}
+
+.nav-link.active {
+  color: var(--bs-primary) !important;
+  border-bottom: 3px solid var(--bs-primary) !important;
+  background-color: transparent !important;
+}

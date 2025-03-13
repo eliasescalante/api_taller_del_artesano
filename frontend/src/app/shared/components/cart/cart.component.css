@@ -1,0 +1,28 @@
+.offcanvas.show-custom {
+  height: 100vh;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+  #cartOffcanvas {
+    max-width: 100%;
+  }
+
+  .cart-badge {
+    font-size: 0.75rem;
+    /* Más pequeño */
+    top: 0px;
+    right: -12px;
+    position: absolute;
+    transform: translate(0%, 0%);
+    background-color: #dc3545;
+    /* bg-danger */
+    border-radius: 30%;
+    padding: 0.15rem 0.3rem;
+    /* Menos padding */
+    color: white;
+  }
+
+.bi-cart{
+  cursor: pointer;
+}

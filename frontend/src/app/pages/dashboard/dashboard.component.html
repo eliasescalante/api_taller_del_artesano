@@ -1,0 +1,141 @@
+<!-- dashboard.component.html -->
+<app-header>
+    <div class="d-flex justify-content-between align-items-center w-100">
+        <!-- Búsqueda común para todos -->
+        <app-search class="ms-4 me-4"></app-search>
+
+        <!-- Contenedor íconos derecho -->
+        <div class="d-flex align-items-center gap-3">
+            <div class="d-flex gap-3">
+                <app-perfil-icon></app-perfil-icon>
+                <app-cart></app-cart>
+                <app-favs-icon></app-favs-icon>
+                <app-sell-button></app-sell-button>
+                <app-logout-button></app-logout-button>
+            </div>
+        </div>
+    </div>
+</app-header>
+
+<app-category></app-category>
+
+<!-- Botón para móviles -->
+<button class="btn d-md-none fixed-top mt-5 ms-2 z-3" type="button" data-bs-toggle="offcanvas"
+    data-bs-target="#sidebarMobile" style="z-index: 1031">
+    <i class="bi bi-list fs-4"></i>
+</button>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar Desktop -->
+        <div class="col-md-3 col-lg-2 bg-light vh-100 p-4 border-end d-flex flex-column">
+            <!-- Perfil del menú -->
+            <a class="nav-link py-2 px-3 rounded d-flex flex-column align-items-center
+text-decoration-none hover-primary transition
+border-start border-3 border-transparent" routerLink="/dashboard/perfil" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">
+                <div class="mb-2 transition hover-scale">
+                    <img src="https://storage.googleapis.com/a1aa/image/60x2YaHTmjEjaVO8lOmUzXO68wZUH0McvRG7T7CJ-2Q.jpg"
+                        alt="Avatar" class="rounded-circle shadow-sm" width="80" style="transition: transform 0.2s">
+                </div>
+                <h5 class="mb-0 text-dark fw-semibold">Nombre-Perfil</h5>
+            </a>
+
+            <!-- Menú principal -->
+            <nav class="nav flex-column gap-2">
+                <a class="nav-link py-2 px-3 rounded d-flex align-items-center
+                          link-dark text-decoration-none hover-primary transition
+                          border-start border-3 border-transparent" routerLink="/dashboard/buy"
+                    routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <i class="bi bi-cart fs-5 me-2"></i>Compras
+                </a>
+
+                <a class="nav-link py-2 px-3 rounded d-flex align-items-center
+                          link-dark text-decoration-none hover-primary transition
+                          border-start border-3 border-transparent" routerLink="/dashboard/vendor"
+                    routerLinkActive="active">
+                    <i class="bi bi-currency-dollar fs-5 me-2"></i>Vender
+                </a>
+
+                <a class="nav-link py-2 px-3 rounded d-flex align-items-center
+                          link-dark text-decoration-none hover-primary transition
+                          border-start border-3 border-transparent" routerLink="/dashboard/published"
+                    routerLinkActive="active">
+                    <i class="bi bi-box-seam fs-5 me-2"></i>Productos
+                </a>
+
+                <a class="nav-link py-2 px-3 rounded d-flex align-items-center
+                          link-dark text-decoration-none hover-primary transition
+                          border-start border-3 border-transparent" routerLink="/dashboard/mailbox"
+                    routerLinkActive="active">
+                    <i class="bi bi-envelope fs-5 me-2"></i>Buzón
+                </a>
+
+                <a class="nav-link py-2 px-3 rounded d-flex align-items-center
+                          link-dark text-decoration-none hover-primary transition
+                          border-start border-3 border-transparent" routerLink="/dashboard/favorites"
+                    routerLinkActive="active">
+                    <i class="bi bi-heart fs-5 me-2"></i>Favoritos
+                </a>
+
+                <!-- Sección separadora -->
+                <!-- <div class="mt-4 pt-3 border-top">
+                    <h6 class="text-muted small mb-2 text-uppercase fw-bold">Herramientas</h6>
+                </div> -->
+            </nav>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="col-md-9 col-lg-10 p-4">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
+<!-- Sidebar Mobile -->
+<div class="offcanvas offcanvas-start d-md-none" tabindex="-1" id="sidebarMobile">
+    <div class="offcanvas-header border-bottom">
+        <h5 class="offcanvas-title d-flex align-items-center">
+            <i class="bi bi-person-circle me-2"></i>Menú
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body p-3">
+        <nav class="nav flex-column gap-2">
+            <a class="nav-link py-2 px-3 rounded hover-primary
+                      border-start border-3 border-transparent" routerLink="/dashboard/buy" routerLinkActive="active">
+                <i class="bi bi-cart me-2"></i>Compras
+            </a>
+
+            <a class="nav-link py-2 px-3 rounded hover-primary
+                      border-start border-3 border-transparent" routerLink="/dashboard/vendor"
+                routerLinkActive="active">
+                <i class="bi bi-currency-dollar me-2"></i>Vender
+            </a>
+
+            <a class="nav-link py-2 px-3 rounded hover-primary
+                      border-start border-3 border-transparent" routerLink="/dashboard/published"
+                routerLinkActive="active">
+                <i class="bi bi-box-seam me-2"></i>Productos
+            </a>
+
+            <a class="nav-link py-2 px-3 rounded hover-primary
+                      border-start border-3 border-transparent" routerLink="/dashboard/buzon"
+                routerLinkActive="active">
+                <i class="bi bi-envelope me-2"></i>Buzón
+            </a>
+
+            <a class="nav-link py-2 px-3 rounded hover-primary
+                      border-start border-3 border-transparent" routerLink="/dashboard/favoritos"
+                routerLinkActive="active">
+                <i class="bi bi-heart me-2"></i>Favoritos
+            </a>
+
+
+        </nav>
+    </div>
+</div>
+
+
+<!-- Footer común -->
+<app-footer></app-footer>

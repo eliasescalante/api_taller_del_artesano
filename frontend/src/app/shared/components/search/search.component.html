@@ -1,0 +1,30 @@
+<div class="position-relative w-100">
+  <input
+    class="form-control form-control-lg pe-5"
+    placeholder="Busca Cerámica"
+    type="text"
+    [(ngModel)]="searchQuery"
+    (keyup.enter)="performSearch()"
+  >
+  <div class="position-absolute top-50 end-0 translate-middle-y d-flex align-items-center me-2">
+    <!-- Botón de limpiar -->
+    <span 
+      *ngIf="searchQuery"
+      class="text-secondary me-2 hover-opacity"
+      style="cursor: pointer; z-index: 2;"
+      (click)="clearSearch()"
+    >
+      <i class="fas fa-times fs-5"></i>
+    </span>
+    <!-- Separador -->
+    <span class="vr d-none d-sm-inline me-2"></span>
+    <!-- Botón de búsqueda -->
+    <span 
+      class="hover-opacity"
+      style="cursor: pointer; z-index: 2;"
+      (click)="performSearch()"
+    >
+      <i class="fas fa-search text-secondary fs-5"></i>
+    </span>
+  </div>
+</div>
