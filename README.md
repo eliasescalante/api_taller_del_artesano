@@ -66,5 +66,5 @@ npm start
 ### Capturas
 
 ![Index documentacion](https://github.com/No-Country-simulation/equipo-c24-41-t-webapp/blob/backend/src/public/captura1.png)
-![alt text](image.png)
-![alt text](image-1.png)
+![alt text](https://github.com/eliasescalante/api_taller_del_artesano/blob/main/backend/src/public/captura_main.png)
+![alt text](https://github.com/eliasescalante/api_taller_del_artesano/blob/main/backend/src/public/captura_registro.png)
